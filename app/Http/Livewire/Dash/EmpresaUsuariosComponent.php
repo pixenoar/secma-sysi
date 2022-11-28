@@ -42,6 +42,8 @@ class EmpresaUsuariosComponent extends Component{
     public $busqueda;
     public $clon = false;
 
+    public $emailsIguales;
+
     // ----------------
 
     public function mount(Empresa $moEmpresa){
@@ -142,10 +144,13 @@ class EmpresaUsuariosComponent extends Component{
 
     public function update(){
 
+        $this->emailsIguales = $this->moUsuario->email == $this->email ? true : false;
+
         $this->validate([
             'name' => 'exclude_if:clon,true|required|string|max:255',
             'surname' => 'exclude_if:clon,true|required|string|max:255',
             'dni' => 'exclude_if:clon,true|required|integer|digits_between:7,8',
+            'email' => 'exclude_if:emailsIguales,true|required|string|email|max:255|unique:users',
             'moSector' => 'required',
             'puesto' => 'required',
             'roles' => 'exclude_if:clon,true|required',
@@ -153,17 +158,22 @@ class EmpresaUsuariosComponent extends Component{
 
 
         if(!$this->clon){
+
             $this->moUsuario->name = Str::title($this->name);
             $this->moUsuario->surname = Str::title($this->surname);
             $this->moUsuario->dni = $this->dni;
+            $this->moUsuario->email = $this->email;
             $this->moUsuario->save();
 
             $this->moUsuario->roles()->wherePivot('empresa_id', $this->moEmpresa->id)->detach();
-            
             foreach($this->roles as $rol) {
                 $this->moUsuario->roles()->attach($rol, ['empresa_id' => $this->moEmpresa->id]);
+            }            
+
+            if(!$this->emailsIguales){
+                event(new Registered($this->moUsuario));
             }
-            //$this->moUsuario->roles()->attach($this->roles, ['empresa_id' => $this->moEmpresa->id]);            
+
         }
 
 
@@ -210,7 +220,7 @@ class EmpresaUsuariosComponent extends Component{
 
     public function render(){
         return view('livewire.dash.empresa-usuarios-component',[
-            'usuarios' => $this->moEmpresa->usuarios()->wherePivotIn('sector_id', $this->moEmpresa->getOrganigrama(session('rol')->id == 3 ? session('sector')->id : 0)->modelKeys())->where(function($query){ $query->Where('name', 'like', '%'.$this->busqueda.'%')->orWhere('surname', 'like', '%'.$this->busqueda.'%')->orWhere('dni', 'like', '%'.$this->busqueda.'%'); })->orderBy('surname')->orderBy('name')->paginate(2)
+            'usuarios' => $this->moEmpresa->usuarios()->wherePivotIn('sector_id', $this->moEmpresa->getOrganigrama(session('rol')->id == 3 ? session('sector')->id : 0)->modelKeys())->where(function($query){ $query->Where('name', 'like', '%'.$this->busqueda.'%')->orWhere('surname', 'like', '%'.$this->busqueda.'%')->orWhere('dni', 'like', '%'.$this->busqueda.'%'); })->orderBy('surname')->orderBy('name')->paginate(15)
         ])->layout('dash.main');
     }
 

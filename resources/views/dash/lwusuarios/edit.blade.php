@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" wire:model.defer="email" placeholder="Correo Electrónico" disabled>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" wire:model.defer="email" placeholder="Correo Electrónico">
                                 <label for="email">Correo Electrónico</label>
                                 @error('email')
                                     <span class="invalid-feedback">

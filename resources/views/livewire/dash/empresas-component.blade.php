@@ -7,7 +7,7 @@
                 <h5 class="fw-bold mb-0">Empresas</h5>
             </div>
             <div>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreate">Nuevo</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreate"><i class="bi bi-plus-lg"></i></button>
             </div>
         </div>
 
@@ -34,9 +34,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('empresas.dashboard.index', $empresa) }}" class="btn btn-primary btn-sm" role="button"><i class="bi bi-gear"></i></a>
-                                        <button type="button" wire:click="show({{ $empresa->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow"><i class="bi bi-info-lg"></i></button>
-                                        <button type="button" wire:click="edit({{ $empresa->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bi bi-pencil"></i></button>
+                                        <a href="{{ route('empresas.dashboard.index', $empresa) }}" class="btn btn-primary btn-sm" role="button" title="Configurar"><i class="bi bi-gear"></i></a>
+                                        <button type="button" wire:click="show({{ $empresa->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow" title="Información"><i class="bi bi-info-lg"></i></button>
+                                        <button type="button" wire:click="edit({{ $empresa->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit" title="Modificar"><i class="bi bi-pencil"></i></button>
                                     </td>
                                 </tr>
                             @empty

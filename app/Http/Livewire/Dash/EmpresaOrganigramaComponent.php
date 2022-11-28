@@ -43,7 +43,7 @@ class EmpresaOrganigramaComponent extends Component{
         $sector = new Sector;
         $sector->empresa_id = $this->moEmpresa->id;
         $sector->padre_id = $padre_id;
-        $sector->nombre = Str::title($this->seNombre);
+        $sector->nombre = $this->seNombre;
         $sector->save();
 
         $this->reset(['moSector', 'seNombre']);
@@ -67,7 +67,7 @@ class EmpresaOrganigramaComponent extends Component{
             'seNombre' => 'required|string|max:255',
         ]);
 
-        $this->moSector->nombre = Str::title($this->seNombre); 
+        $this->moSector->nombre = $this->seNombre; 
         $this->moSector->save();
 
         session()->flash('message', 'ok');
@@ -90,7 +90,7 @@ class EmpresaOrganigramaComponent extends Component{
 
         $puesto = new Puesto;
         $puesto->sector_id = $this->moSector->id;
-        $puesto->nombre = Str::title($this->puNombre);
+        $puesto->nombre = $this->puNombre;
         $puesto->save();
 
         $this->reset(['puNombre']);
@@ -114,7 +114,7 @@ class EmpresaOrganigramaComponent extends Component{
             'puNombre' => 'required|string|max:255',
         ]);
 
-        $this->moPuesto->nombre = Str::title($this->puNombre);
+        $this->moPuesto->nombre = $this->puNombre;
         $this->moPuesto->save();
 
         $this->moSector->refresh();

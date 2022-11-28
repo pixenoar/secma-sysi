@@ -21,11 +21,10 @@
                                 <label for="opcTipo">Tipo</label>
                             </div>
                         </div>
-
                         @if($opcTipo=='T')
                             <div class="col-lg-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control @error('opcDescripcion') is-invalid @enderror" id="opcDescripcion" wire:model.defer="opcDescripcion" placeholder="Descripción">
+                                    <input type="text" id="opcDescripcion" wire:model.defer="opcDescripcion" class="form-control @error('opcDescripcion') is-invalid @enderror" placeholder="Descripción">
                                     <label for="opcDescripcion">Descripción</label>
                                     @error('opcDescripcion')
                                         <span class="invalid-feedback">
@@ -38,7 +37,7 @@
                             <div class="col-lg-12">
                                 <div class="border rounded p-3">
                                     <label for="opcDiapositiva" class="form-label">Adjuntar archivo</label>
-                                    <input class="form-control @error('opcDiapositiva') is-invalid @enderror" type="file" wire:model="opcDiapositiva" id="opcDiapositiva">
+                                    <input type="file" id="opcDiapositiva" wire:model.defer="opcDiapositiva" class="form-control @error('opcDiapositiva') is-invalid @enderror">
                                     @error('opcDiapositiva')
                                         <span class="invalid-feedback">
                                             {{ $message }}
@@ -47,7 +46,6 @@
                                 </div> 
                             </div>                                       
                         @endif
-
                         <div class="col-lg-12">
                             <input type="checkbox" class="btn-check" id="opcCorrecta" wire:model="opcCorrecta" autocomplete="off">
                             <label class="btn btn-outline-success btn-sm" for="opcCorrecta"><i class="bi bi-check-lg"></i> ESTA OPCIÓN ES CORRECTA</label>  
