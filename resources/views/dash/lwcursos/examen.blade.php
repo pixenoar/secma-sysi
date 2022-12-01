@@ -1,5 +1,5 @@
 <div wire:ignore.self class="modal fade" id="modalExamen" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalExamenLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalExamenLabel">Examen</h5>
@@ -81,8 +81,8 @@
                                                     <button type="button" wire:click="opcCreate({{ $pregunta->id }})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateOpcion">Nueva opción</button>
                                                     <button type="button" wire:click="preUp({{ $pregunta->id }})" class="btn btn-outline-primary @if($loop->first) disabled @endif"><i class="bi bi-chevron-up"></i></button>
                                                     <button type="button" wire:click="preDown({{ $pregunta->id }})" class="btn btn-outline-primary @if($loop->last) disabled @endif"><i class="bi bi-chevron-down"></i></button>
-                                                    <button type="button" wire:click="preEdit({{ $pregunta->id }})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditPregunta"><i class="bi bi-pencil"></i></button>
-                                                    <button type="button" wire:click="preDelete({{ $pregunta->id }})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeletePregunta"><i class="bi bi-trash"></i></button>
+                                                    <button type="button" wire:click="preEdit({{ $pregunta->id }})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditPregunta" title="Modificar"><i class="bi bi-pencil"></i></button>
+                                                    <button type="button" wire:click="preDelete({{ $pregunta->id }})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeletePregunta" title="Eliminar"><i class="bi bi-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>

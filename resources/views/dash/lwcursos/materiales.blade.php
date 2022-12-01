@@ -85,7 +85,7 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td><a href="@if($material->tipo=='A') {{ Storage::url($material->url) }} @else {{ $material->url }} @endif" target="_blank" class="text-decoration-none">{{ $material->nombre }}</a></td>
                                                 <td>
-                                                    <button type="button" wire:click="matDelete({{ $material->id }})" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                                    <button type="button" wire:click="matDelete({{ $material->id }})" class="btn btn-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
                                                 </td>
                                             </tr>
                                         @empty

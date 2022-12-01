@@ -40,13 +40,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" wire:click="show({{ $profesor->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow"><i class="bi bi-info-lg"></i></button>
-                                        <button type="button" wire:click="edit({{ $profesor->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bi bi-pencil"></i></button>
+                                        <button type="button" wire:click="show({{ $profesor->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow" title="Información"><i class="bi bi-info-lg"></i></button>
+                                        <button type="button" wire:click="edit({{ $profesor->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit" title="Modificar"><i class="bi bi-pencil"></i></button>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="text-center">No se encontraron profesores</td>
+                                    <td colspan="4" class="text-center">No se encontraron profesores</td>
                                 </tr>
                             @endforelse
                         </tbody>

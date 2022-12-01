@@ -44,8 +44,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('certificado',  $evaluacion) }}" class="btn btn-primary btn-sm @if ($evaluacion->nota <> 'A') disabled @endif" role="button"><i class="bi bi-download"></i></a>
-                                            <button type="button" wire:click="evaluacion({{ $evaluacion->id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEvaluacion"><i class="bi bi-eye"></i></button>
+                                            <a href="{{ route('certificado',  $evaluacion) }}" class="btn btn-primary btn-sm @if ($evaluacion->nota <> 'A') disabled @endif" role="button" title="Descargar certificado"><i class="bi bi-download"></i></a>
+                                            <button type="button" wire:click="evaluacion({{ $evaluacion->id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEvaluacion" title="Ver examen"><i class="bi bi-eye"></i></button>
                                         </td>
                                     </tr>
                                 @empty

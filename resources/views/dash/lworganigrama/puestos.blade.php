@@ -52,7 +52,7 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>{{ $puesto->nombre }}</td>
                                                 <td>
-                                                    <button type="button" wire:click="editPuesto({{ $puesto->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditPuesto"><i class="bi bi-pencil"></i></button>
+                                                    <button type="button" wire:click="editPuesto({{ $puesto->id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditPuesto" title="Modificar"><i class="bi bi-pencil"></i></button>
                                                 </td>
                                             </tr>
                                         @empty

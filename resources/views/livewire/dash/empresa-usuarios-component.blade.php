@@ -29,6 +29,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">DNI</th>
+                                <th scope="col">Verificado</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -40,15 +41,21 @@
                                     <td>{{ $usuario->surname.', '.$usuario->name }}</td>
                                     <td>{{ $usuario->dni }}</td>
                                     <td>
+                                        @if($usuario->email_verified_at)
+                                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                        @endif
+                                    </td>
+                                    <td>
                                         <div class="form-check form-switch">
                                             <input type="checkbox" role="switch" wire:click="estado({{ $usuario->id }})" class="form-check-input" @if($usuario->estado) checked @endif>
                                         </div>
                                     </td>
+                                    
                                     <td>
-                                        <button type="button" wire:click="planes({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalPlanes"><i class="bi bi-calendar-check"></i></button>
-                                        <button type="button" wire:click="evaluaciones({{ $usuario->id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEvaluaciones"><i class="bi bi-ui-checks"></i></button>
-                                        <button type="button" wire:click="show({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow"><i class="bi bi-info-lg"></i></button>
-                                        <button type="button" wire:click="edit({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }}, {{ $usuario->pivot->clon }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit" @if(session('rol')->id > 2) disabled @endif><i class="bi bi-pencil"></i></button>
+                                        <button type="button" wire:click="planes({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalPlanes" title="Plan de capacitación"><i class="bi bi-calendar-check"></i></button>
+                                        <button type="button" wire:click="evaluaciones({{ $usuario->id }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEvaluaciones"><i class="bi bi-ui-checks" title="Examenes"></i></button>
+                                        <button type="button" wire:click="show({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalShow" title="Información"><i class="bi bi-info-lg"></i></button>
+                                        <button type="button" wire:click="edit({{ $usuario->id }}, {{ $usuario->pivot->puesto_id }}, {{ $usuario->pivot->clon }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdit" @if(session('rol')->id > 2) disabled @endif title="Modificar"><i class="bi bi-pencil"></i></button>
                                     </td>
                                 </tr>
                             @empty

@@ -28,9 +28,6 @@
                     </ul>
                 </li>
             @endif
-            <li class="nav-item">
-                <a href="#" class="nav-link"><i class="bi bi-bell bi-1x"></i></a>
-            </li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link" id="acount" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="-10,5"><i class="bi bi-person-circle bi-1x"></i></a>
                 <ul class="dropdown-menu" aria-labelledby="acount">

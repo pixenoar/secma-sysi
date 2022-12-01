@@ -7,7 +7,7 @@
                 <h5 class="fw-bold mb-0">Empresas</h5>
             </div>
             <div>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreate"><i class="bi bi-plus-lg"></i></button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreate">Nuevo</button>
             </div>
         </div>
 

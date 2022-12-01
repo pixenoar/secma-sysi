@@ -51,7 +51,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('certificado', $evaluacion) }}" class="btn btn-primary btn-sm @if ($evaluacion->nota <> 'A') disabled @endif" role="button"><i class="bi bi-download"></i></a>
+                                        <a href="{{ route('certificado', $evaluacion) }}" class="btn btn-primary btn-sm @if ($evaluacion->nota <> 'A') disabled @endif" role="button" title="Descargar certificado"><i class="bi bi-download"></i></a>
                                     </td>
                                 </tr>
                             @empty

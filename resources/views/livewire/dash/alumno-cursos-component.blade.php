@@ -48,8 +48,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" wire:click="curso({{ $plan->curso }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCurso"><i class="bi bi-journal"></i></button>                               
-                                        <button type="button" wire:click="rendir({{ $plan->curso->examen }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalExamen" @if( ($plan->estado(Auth::user()->id, session('empresa')->id) == 'V') || ($plan->bloqueado(Auth::user()->id, session('empresa')->id)) ) disabled @endif><i class="bi-ui-checks"></i></button>
+                                        <button type="button" wire:click="curso({{ $plan->curso }})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCurso" title="Información del curso"><i class="bi bi-journal"></i></button>                               
+                                        <button type="button" wire:click="rendir({{ $plan->curso->examen }})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalExamen" @if( ($plan->estado(Auth::user()->id, session('empresa')->id) == 'V') || ($plan->bloqueado(Auth::user()->id, session('empresa')->id)) ) disabled @endif title="Rendir examen"><i class="bi-ui-checks"></i></button>
                                     </td>
                                 </tr>
                             @empty

@@ -91,9 +91,9 @@
                         </div>
                         <div class="col-lg-12">
                             @foreach($moRoles as $rol)
-                                <div class="d-inline-block mb-1">
-                                    <input type="checkbox" class="btn-check" id="roles{{ $loop->iteration }}" wire:model="roles" value="{{ $rol->id }}" autocomplete="off">
-                                    <label class="btn btn-outline-primary btn-sm" for="roles{{ $loop->iteration }}">{{ $rol->nombre }}</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="roles{{ $loop->iteration }}" wire:model="roles" value="{{ $rol->id }}">
+                                    <label class="form-check-label" for="roles{{ $loop->iteration }}">{{ $rol->nombre }}</label>
                                 </div>
                             @endforeach
                             @error('roles')

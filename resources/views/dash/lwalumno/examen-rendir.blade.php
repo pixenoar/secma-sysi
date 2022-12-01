@@ -21,29 +21,27 @@
                     
                         @foreach($reMoPreguntas->first()->opciones as $opcion)
                             @if($loop->first)
-                                <div class="row justify-content-center gx-4 gx-lg-5 gy-4">
+                                <div class="row justify-content-center align-items-start gx-4 gx-lg-5 gy-4">
                             @endif
 
-                                @if($opcion->tipo == 'T')
-                                    <div class="col-2 col-lg-1">
-                                        <input type="checkbox" class="btn-check" id="op{{ $loop->iteration }}" wire:model="reRespuestas" value="{{ $opcion->id }}" autocomplete="off">
-                                        <label class="btn btn-outline-success btn-sm" for="op{{ $loop->iteration }}"><i class="bi bi-check-lg"></i></label> 
-                                    </div>                 
-                                    <div class="col-10 col-lg-11">{{ $opcion->descripcion }}</div>
-                                @else
-                                    <div class="col-2 col-lg-1">
-                                        <input type="checkbox" class="btn-check" id="op{{ $loop->iteration }}" wire:model="reRespuestas" value="{{ $opcion->id }}" autocomplete="off">
-                                        <label class="btn btn-outline-success btn-sm" for="op{{ $loop->iteration }}"><i class="bi bi-check-lg"></i></label> 
-                                    </div> 
-                                    <div class="col-4 col-lg-3">
-                                        <div class="position-relative">
-                                            <img src="{{ Storage::url($opcion->descripcion) }}" class="img-fluid rounded" alt="Imagen">
-                                            <div class="position-absolute bottom-0 end-0 p-1 p-lg-2">
-                                                <a href="{{ Storage::url($opcion->descripcion) }}" target="_blank" class="btn btn-light btn-sm" role="button"><i class="bi bi-arrows-fullscreen"></i></a>
-                                            </div>
+                            @if($opcion->tipo == 'T')
+                                <div class="col-2 col-lg-1">
+                                    <input type="checkbox" class="form-check-input fs-4" id="op{{ $loop->iteration }}" wire:model="reRespuestas" value="{{ $opcion->id }}">
+                                </div>                 
+                                <div class="col-10 col-lg-11 pt-1">{{ $opcion->descripcion }}</div>
+                            @else
+                                <div class="col-2 col-lg-1">
+                                    <input type="checkbox" class="form-check-input fs-4" id="op{{ $loop->iteration }}" wire:model="reRespuestas" value="{{ $opcion->id }}">
+                                </div> 
+                                <div class="col-4 col-lg-3">
+                                    <div class="position-relative">
+                                        <img src="{{ Storage::url($opcion->descripcion) }}" class="img-fluid rounded" alt="Imagen">
+                                        <div class="position-absolute bottom-0 end-0 p-1 p-lg-2">
+                                            <a href="{{ Storage::url($opcion->descripcion) }}" target="_blank" class="btn btn-light btn-sm" role="button"><i class="bi bi-arrows-fullscreen"></i></a>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
+                            @endif
 
                             @if($loop->last)
                                 </div>
@@ -73,7 +71,7 @@
                 </div>
                 <div class="modal-footer">
                     @if($reMoPreguntas->count())
-                        <button type="button" class="btn @if($reTiempo>30) btn-warning @else btn-danger @endif fw-bold w-25">
+                        <button type="button" class="btn @if($reTiempo>30) btn-warning @else btn-danger @endif fw-bold w-25 pe-none">
                             <div wire:poll.keep-alive.1000ms="cuentaRegresiva">
                                 <i class="bi bi-stopwatch"></i> {{ $reCronometro->format('i:s') }}
                             </div>

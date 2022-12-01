@@ -38,7 +38,7 @@ class EmpresasComponent extends Component{
         ]);
 
         $moEmpresa = new Empresa;
-        $moEmpresa->razon_social = Str::title($this->razon_social);
+        $moEmpresa->razon_social = $this->razon_social;
         $moEmpresa->cuit = $this->cuit;
         $moEmpresa->direccion = $this->direccion;
         $moEmpresa->telefono = $this->telefono;
@@ -85,7 +85,7 @@ class EmpresasComponent extends Component{
         ]);
 
 
-        $this->moEmpresa->razon_social = Str::title($this->razon_social);
+        $this->moEmpresa->razon_social = $this->razon_social;
         $this->moEmpresa->cuit = $this->cuit;
         $this->moEmpresa->direccion = $this->direccion;
         $this->moEmpresa->telefono = $this->telefono;
