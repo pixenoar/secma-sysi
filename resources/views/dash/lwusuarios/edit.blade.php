@@ -2,15 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditLabel">Modificar Usuario</h5>
+                <h5 class="modal-title fw-bold" id="modalEditLabel">Modificar usuario</h5>
             </div>
             <form wire:submit.prevent="update">
-                <div class="modal-body position-relative py-4">
-                    @if(session()->has('message'))
-                        <div class="position-absolute top-100 start-50 translate-middle bg-white">
-                            <i class="bi bi-check-circle-fill fs-3 text-success"></i>
-                        </div>  
-                    @endif
+                <div class="modal-body py-4">
                     <div class="row g-3">
                         <div class="col-lg-6">
                             <div class="form-floating">
@@ -47,7 +42,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" wire:model.defer="email" placeholder="Correo Electrónico">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" wire:model.defer="email" placeholder="Correo Electrónico" @if($clon) disabled @endif>
                                 <label for="email">Correo Electrónico</label>
                                 @error('email')
                                     <span class="invalid-feedback">
@@ -105,7 +100,7 @@
                     </div>
                  
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer @if(session()->has('message')) border-top border-success border-3 @endif">
                     <button type="button" wire:click="close" class="btn btn-secondary mx-0" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary" wire:target="update" wire:loading.class="disabled">
                         <div wire:loading.remove wire:target="update">

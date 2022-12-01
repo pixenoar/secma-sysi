@@ -2,15 +2,9 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalPuestosLabel">Puestos de <span class="fw-bold">@if($moSector) {{ $moSector->nombre }} @endif</span></h5>
-                
+                <h5 class="modal-title fw-bold" id="modalPuestosLabel">Puestos de <span class="fw-normal">@if($moSector) {{ $moSector->nombre }} @endif</span></h5>   
             </div>
-            <div class="modal-body position-relative py-4">
-                @if(session()->has('message'))
-                    <div class="position-absolute top-100 start-50 translate-middle bg-white">
-                        <i class="bi bi-check-circle-fill fs-3 text-success"></i>
-                    </div>  
-                @endif
+            <div class="modal-body py-4">
                 <form wire:submit.prevent="storePuesto">
                     <div class="row g-3">
                         <div class="col-lg-12">
@@ -67,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer @if(session()->has('message')) border-top border-success border-3 @endif">
                 <button type="button" wire:click="close" class="btn btn-secondary mx-0" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>

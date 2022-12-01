@@ -2,16 +2,10 @@
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalExamenLabel">Examen</h5>
+                <h5 class="modal-title fw-bold" id="modalExamenLabel">Examen</h5>
                 <span>versión #{{ $moExamen ? $moCurso->version() : '' }}</span>
             </div>
-            <div class="modal-body position-relative py-4">
-
-                @if(session()->has('message'))
-                    <div class="position-absolute top-100 start-50 translate-middle bg-white">
-                        <i class="bi bi-check-circle-fill fs-3 text-success"></i>
-                    </div>  
-                @endif
+            <div class="modal-body py-4">
 
                 <form wire:submit.prevent="exaUpdate">
                     <div class="row g-3">
@@ -61,7 +55,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <div>
-                                <h5 class="mb-0">Preguntas</h5>
+                                <h5 class="mb-0 fw-bold text-primary">Preguntas</h5>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreatePregunta">Nueva pregunta</button>
@@ -123,7 +117,7 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer @if(session()->has('message')) border-top border-success border-3 @endif">
                 <button type="button" wire:click="exaClose" class="btn btn-secondary mx-0" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>

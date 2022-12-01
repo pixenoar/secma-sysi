@@ -2,15 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreatePreguntaLabel">Nueva Pregunta</h5>
+                <h5 class="modal-title fw-bold" id="modalCreatePreguntaLabel">Nueva pregunta</h5>
             </div>
             <form wire:submit.prevent="preStore">
-                <div class="modal-body position-relative py-4">
-                    @if(session()->has('message'))
-                        <div class="position-absolute top-100 start-50 translate-middle bg-white">
-                            <i class="bi bi-check-circle-fill fs-3 text-success"></i>
-                        </div>  
-                    @endif
+                <div class="modal-body py-4">
                     <div class="row g-3">
                         <div class="col-lg-12">
                             <div class="form-floating">
@@ -29,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer @if(session()->has('message')) border-top border-success border-3 @endif">
                     <button type="button" wire:click="preClose" class="btn btn-secondary mx-0" data-bs-toggle="modal" data-bs-target="#modalExamen">Volver</button>
                     <button type="submit" class="btn btn-primary" wire:target="preStore" wire:loading.class="disabled">
                         <div wire:loading.remove wire:target="preStore">Guardar</div>                        

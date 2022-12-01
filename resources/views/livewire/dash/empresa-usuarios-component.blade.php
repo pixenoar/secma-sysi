@@ -42,7 +42,7 @@
                                     <td>{{ $usuario->dni }}</td>
                                     <td>
                                         @if($usuario->email_verified_at)
-                                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                            {{ $usuario->email_verified_at->diffForHumans() }}
                                         @endif
                                     </td>
                                     <td>
@@ -60,7 +60,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">No se encontraron usuarios</td>
+                                    <td colspan="6" class="text-center">No se encontraron usuarios</td>
                                 </tr>
                             @endforelse
                         </tbody>

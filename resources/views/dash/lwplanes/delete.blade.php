@@ -2,15 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalDeleteLabel">Eliminar Plan</h5>
+                <h5 class="modal-title fw-bold" id="modalDeleteLabel">Eliminar plan</h5>
             </div>
             <form wire:submit.prevent="destroy">
-                <div class="modal-body position-relative py-4">
-                    @if(session()->has('message'))
-                        <div class="position-absolute top-100 start-50 translate-middle bg-white">
-                            <i class="bi bi-check-circle-fill fs-3 text-success"></i>
-                        </div>  
-                    @endif
+                <div class="modal-body py-4">
                     <div class="row gy-3">
                         <div class="col-lg-12">
                             <div class="form-select @error('moSector') is-invalid @enderror" data-bs-toggle="modal" data-bs-target="#modalOrganigrama">
@@ -78,7 +73,7 @@
                     </div> 
                  
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer @if(session()->has('message')) border-top border-success border-3 @endif">
                     <button type="button" wire:click="close" class="btn btn-secondary mx-0" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-danger" wire:target="destroy">Eliminar</button>
                 </div>

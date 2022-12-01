@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalDeleteOpcionLabel">Eliminar Opción</h5>
+                <h5 class="modal-title fw-bold" id="modalDeleteOpcionLabel">Eliminar opción</h5>
             </div>
             <div class="modal-body">
                 @if($moOpcion)

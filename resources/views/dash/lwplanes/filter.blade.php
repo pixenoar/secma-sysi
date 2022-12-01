@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFilterLabel"><i class="bi bi-funnel-fill"></i> Filtros</h5>
+                <h5 class="modal-title fw-bold" id="modalFilterLabel"><i class="bi bi-funnel-fill"></i> Filtros</h5>
             </div>
             <form wire:submit.prevent="filter">
                 <div class="modal-body">

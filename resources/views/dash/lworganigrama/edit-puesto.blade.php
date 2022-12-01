@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditPuestoLabel">Modificar Puesto</h5>
+                <h5 class="modal-title" id="modalEditPuestoLabel">Modificar puesto</h5>
             </div>
             <form wire:submit.prevent="updatePuesto">
                 <div class="modal-body position-relative py-4">

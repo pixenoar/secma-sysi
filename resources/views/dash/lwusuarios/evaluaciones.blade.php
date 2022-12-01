@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEvaluacionesLabel">Examenes</h5>
+                <h5 class="modal-title fw-bold" id="modalEvaluacionesLabel">Examenes</h5>
             </div>
             <div class="modal-body">
 

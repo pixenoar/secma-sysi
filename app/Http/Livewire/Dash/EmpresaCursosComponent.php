@@ -320,13 +320,14 @@ class EmpresaCursosComponent extends Component{
 
         $this->exaStoreNewVersion();
 
+        /*
         if($this->preExcluyente){
             $preguntaExcluyente = Pregunta::where('examen_id', $this->moExamen->id)->where('excluyente', 1)->first();
             if($preguntaExcluyente){
                 $preguntaExcluyente->excluyente = NULL;
                 $preguntaExcluyente->save();
             }
-        }
+        }*/
 
         $pregunta = new Pregunta;
         $pregunta->examen_id = $this->moExamen->id;

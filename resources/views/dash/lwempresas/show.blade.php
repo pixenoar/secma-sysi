@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalShowLabel">Información de la Empresa</h5>
+                <h5 class="modal-title fw-bold" id="modalShowLabel">Información de la empresa</h5>
             </div>
             <div class="modal-body">
 

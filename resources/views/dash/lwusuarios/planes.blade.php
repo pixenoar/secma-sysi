@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalPlanesLabel">Plan de Capacitación</h5>
+                <h5 class="modal-title fw-bold" id="modalPlanesLabel">Plan de capacitación</h5>
             </div>
             <div class="modal-body">
             @if($moPuesto && $moUsuario)
