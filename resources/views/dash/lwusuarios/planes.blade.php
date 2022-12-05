@@ -34,7 +34,7 @@
                                     </td>
                                     <td>
                                         @if( $plan->estado($moUsuario->id, $moEmpresa->id) == 'V' )
-                                            Válido hasta {{ $plan->curso->examen->evaluaciones->where('user_id', $moUsuario->id)->where('nota', 'A')->sortByDesc('id')->first()->vigencia() }}
+                                            {{ $plan->curso->examen->evaluaciones->where('user_id', $moUsuario->id)->where('nota', 'A')->sortByDesc('id')->first()->vigencia() }}
                                         @elseif( $plan->bloqueado($moUsuario->id, $moEmpresa->id) )
                                             Curso bloqueado.
                                         @endif

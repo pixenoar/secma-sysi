@@ -46,7 +46,7 @@
         <h4>DNI: {{ $evaluacion->user->dni }}</h4>
         <h3 class="fw-light">ha aprobado el curso de</h3>
         <h2>{{ $evaluacion->examen->curso->nombre }}</h2>
-        <h3 class="fw-light">con calificación de <span class="fw-bold">{{ $evaluacion->calificacion }}%</span> y validez del <span class="fw-bold">{{ $evaluacion->updated_at->format('d/m/Y') }}</span> al <span class="fw-bold">{{ $evaluacion->vigencia() }}</span></h3>
+        <h3 class="fw-light">con calificación de <span class="fw-bold">{{ $evaluacion->calificacion }}%</span>@if($evaluacion->examen->curso->plan->frecuencia) y validez del <span class="fw-bold">{{ $evaluacion->updated_at->format('d/m/Y') }}</span> al <span class="fw-bold">{{ $evaluacion->vigencia() }}</span>@endif</h3>
         <div class="mt-5">
             <div class="d-inline-block me-5">
                 <img src="{{ asset(Storage::url($evaluacion->examen->curso->profesor->firma)) }}" alt="Firma" height="50">

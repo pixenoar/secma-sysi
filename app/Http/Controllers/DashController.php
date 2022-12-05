@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use PDF;
 
 use App\Models\Rol;
@@ -63,7 +64,7 @@ class DashController extends Controller{
         $empresa = Empresa::find($evaluacion->empresa_id);
         $certificado = PDF::loadView('dash.certificado', ['evaluacion' => $evaluacion, 'empresa' => $empresa]);
         $certificado->setPaper('A4', 'landscape');
-        return $certificado->download('certificado'.$eid.'.pdf');
+        return $certificado->download('certificado-'.Str::slug($evaluacion->examen->curso->nombre, '-').'.pdf');
     }
 
 }

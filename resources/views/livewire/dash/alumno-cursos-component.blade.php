@@ -17,7 +17,6 @@
                     <table class="table table-striped align-middle">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Curso</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Observaciones</th>
@@ -27,7 +26,6 @@
                         <tbody>
                             @forelse($moPuesto->planes as $plan)
                                 <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $plan->curso->nombre }}</td>
                                     <td>
                                         @if($plan->estado(Auth::user()->id, session('empresa')->id) == 'P')
@@ -42,7 +40,7 @@
                                     </td>
                                     <td>
                                         @if( $plan->estado(Auth::user()->id, session('empresa')->id) == 'V' )
-                                            Válido hasta {{ $plan->curso->examen->evaluaciones->where('user_id', Auth::user()->id)->where('nota', 'A')->sortByDesc('id')->first()->vigencia() }}
+                                            {{ $plan->curso->examen->evaluaciones->where('user_id', Auth::user()->id)->where('nota', 'A')->sortByDesc('id')->first()->vigencia() }}
                                         @elseif( $plan->bloqueado(Auth::user()->id, session('empresa')->id) )
                                             Pongase en contacto con su supervisor.
                                         @endif
