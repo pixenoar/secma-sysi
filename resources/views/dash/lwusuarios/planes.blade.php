@@ -14,6 +14,7 @@
                                 <th scope="col">Curso</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Observaciones</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +40,15 @@
                                             Curso bloqueado.
                                         @endif
                                     </td>
+                                    <td>
+                                        @if($plan->bloqueado($moUsuario->id, $moEmpresa->id))
+                                            <button type="button" class="btn btn-primary btn-sm" title="Desbloquear cusrso"><i class="bi bi-unlock"></i></button>
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">No se encontraron cursos</td>
+                                    <td colspan="5" class="text-center">No se encontraron cursos</td>
                                 </tr>
                             @endforelse
                         </tbody>
