@@ -42,7 +42,7 @@
                                     </td>
                                     <td>
                                         @if($plan->bloqueado($moUsuario->id, $moEmpresa->id))
-                                            <button type="button" class="btn btn-primary btn-sm" title="Desbloquear cusrso"><i class="bi bi-unlock"></i></button>
+                                            <button type="button" wire:click="desbloquearPlan({{ $plan->id }})" class="btn btn-primary btn-sm" title="Desbloquear cusrso"><i class="bi bi-unlock"></i></button>
                                         @endif
                                     </td>
                                 </tr>

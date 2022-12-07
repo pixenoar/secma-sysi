@@ -16,6 +16,7 @@ use App\Models\Rol;
 use App\Models\Sector;
 use App\Models\Puesto;
 use App\Models\Evaluacion;
+use App\Models\Plan;
 
 
 class EmpresaUsuariosComponent extends Component{
@@ -63,6 +64,42 @@ class EmpresaUsuariosComponent extends Component{
     public function planes($user_id, $puesto_id){
         $this->moUsuario = User::find($user_id);
         $this->moPuesto = Puesto::find($puesto_id);
+    } 
+    
+    public function desbloquearPlan($plan_id){
+
+        $plan = Plan::find($plan_id);
+
+        $evaDesaprobadas = $this->moUsuario->evaluaciones()->where('empresa_id', $this->moEmpresa->id)
+                                                           ->where('examen_id', $plan->curso->examen->id)
+                                                           ->where('estado', 'C')
+                                                           ->where('nota', 'D')
+                                                           ->whereNull('ignorado')
+                                                           ->get();
+
+        $evaIncompletas = $this->moUsuario->evaluaciones()->where('empresa_id', $this->moEmpresa->id)
+                                                          ->where('examen_id', $plan->curso->examen->id)
+                                                          ->where('estado', 'I')
+                                                          ->whereNull('ignorado')
+                                                          ->get();
+
+        if($evaDesaprobadas->count() >= 2){
+
+            $evaLast = $evaDesaprobadas->last();
+            $evaLast->ignorado = true;
+            $evaLast->save();
+
+        }
+
+        if($evaIncompletas->count() >= 2){
+
+            $evaInco = $evaIncompletas->last();
+            $evaInco->ignorado = true;
+            $evaInco->save();
+
+        }
+
+        
     }    
 
     public function evaluaciones($user_id){

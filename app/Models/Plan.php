@@ -49,6 +49,27 @@ class Plan extends Model{
 
     public function bloqueado($user_id, $empresa_id){
 
+
+        $desaprobados = $this->curso->examen->evaluaciones()->where('user_id', $user_id)
+                                                            ->where('empresa_id', $empresa_id)
+                                                            ->where('estado', 'C')
+                                                            ->where('nota', 'D')
+                                                            ->whereNull('ignorado')
+                                                            ->get();
+
+        $incompletos = $this->curso->examen->evaluaciones()->where('user_id', $user_id)
+                                                           ->where('empresa_id', $empresa_id)
+                                                           ->where('estado', 'I')
+                                                           ->whereNull('ignorado')
+                                                           ->get();
+
+        if( $desaprobados->count() >= 2 || $incompletos->count() >= 2 ){
+            $bloqueado = true;
+        }else{
+            $bloqueado = false;
+        }
+
+/*
         $desaprobados = $this->curso->examen->evaluaciones()->where('user_id', $user_id)
                                                             ->where('empresa_id', $empresa_id)
                                                             ->where('estado', 'C')
@@ -60,13 +81,9 @@ class Plan extends Model{
                                                             ->where('empresa_id', $empresa_id)
                                                             ->where('estado', 'I')
                                                             ->orderBy('updated_at', 'desc')
-                                                            ->count();                                                    
+                                                            ->count();       */                                             
 
-        if($desaprobados >= 2 || $incompletos >= 2){
-            return true;
-        }else{
-            return false;
-        }
+        return $bloqueado;
 
     }
 

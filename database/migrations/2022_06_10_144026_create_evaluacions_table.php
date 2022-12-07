@@ -15,6 +15,7 @@ class CreateEvaluacionsTable extends Migration{
             $table->char('estado', 1)->default('I');
             $table->char('nota', 1)->nullable();
             $table->unsignedTinyInteger('calificacion')->nullable();
+            $table->boolean('ignorado')->nullable();
             $table->timestamps();
             // FKs
             $table->foreign('examen_id')->references('id')->on('examens');
