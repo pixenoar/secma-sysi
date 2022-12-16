@@ -16,6 +16,7 @@ use App\Models\Material;
 use App\Models\Examen;
 use App\Models\Pregunta;
 use App\Models\Opcion;
+use App\Models\Plan;
 
 class EmpresaCursosComponent extends Component{
 
@@ -135,7 +136,10 @@ class EmpresaCursosComponent extends Component{
             'imagen' => 'nullable|image|mimes:jpg,png|max:1024',
         ]);
 
-        //$this->replicarCurso();
+        
+        if($this->moCurso->categoria_id <> $this->categoria || $this->moCurso->nombre <> Str::title($this->nombre)){
+            $this->replicarCurso();
+        }
 
         $this->moCurso->categoria_id = $this->categoria;
         $this->moCurso->profesor_id = $this->profesor;
@@ -183,7 +187,48 @@ class EmpresaCursosComponent extends Component{
     public function close(){
         $this->reset(['moCurso', 'categoria', 'nombre', 'descripcion', 'autor', 'horas', 'profesor', 'imagen']);
         $this->resetValidation();
-    }    
+    }
+    
+    public function replicarCurso(){
+        
+        if($this->moCurso->estado){
+
+            // replicar curso
+            $newMoCurso = $this->moCurso->replicate();
+            $newMoCurso->save();
+            
+            // replicar examen
+            $newMoExamen = $this->moCurso->examen->replicate();
+            $newMoExamen->curso_id = $newMoCurso->id;
+            $newMoExamen->save();
+
+            // replicar preguntas
+            foreach($newMoExamen->preguntas as $pregunta){
+                $newMoPregunta = $pregunta->replicate();
+                $newMoPregunta->examen_id = $newMoExamen->id;
+                $newMoPregunta->save();
+                if($this->moPregunta && ( $this->moPregunta->id == $pregunta->id ) ){
+                    $this->moPregunta = $newMoPregunta;
+                }
+                // replicar opciones
+                foreach($newMoPregunta->opciones as $opcion){
+                    $newMoOpcion = $opcion->replicate();
+                    $newMoOpcion->pregunta_id = $newMoPregunta->id;
+                    $newMoOpcion->save();
+                    if($this->moOpcion && ( $this->moOpcion->id == $opcion->id ) ){
+                        $this->moOpcion = $newMoOpcion;
+                    }
+                }
+            }
+
+            Plan::where('curso_id', $this->moCurso->id)->update(['curso_id' => $newMoCurso->id]);
+            
+            $this->moCurso = $newMoCurso;
+
+
+        }
+        
+    }
 
     // matriales
 
