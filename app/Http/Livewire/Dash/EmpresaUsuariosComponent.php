@@ -257,7 +257,7 @@ class EmpresaUsuariosComponent extends Component{
 
     public function render(){
         return view('livewire.dash.empresa-usuarios-component',[
-            'usuarios' => $this->moEmpresa->usuarios()->wherePivotIn('sector_id', $this->moEmpresa->getOrganigrama(session('rol')->id == 3 ? session('sector')->id : 0)->modelKeys())->where(function($query){ $query->Where('name', 'like', '%'.$this->busqueda.'%')->orWhere('surname', 'like', '%'.$this->busqueda.'%')->orWhere('dni', 'like', '%'.$this->busqueda.'%'); })->orderBy('surname')->orderBy('name')->paginate(15)
+            'usuarios' => $this->moEmpresa->usuarios()->wherePivotIn('sector_id', $this->moEmpresa->getOrganigrama(session('rol')->id == 3 ? session('sector')->id : 0)->modelKeys())->where(function($query){ $query->Where('name', 'like', '%'.$this->busqueda.'%')->orWhere('surname', 'like', '%'.$this->busqueda.'%')->orWhere('dni', 'like', '%'.$this->busqueda.'%'); })->orderBy('surname')->orderBy('name')->paginate(20)
         ])->layout('dash.main');
     }
 

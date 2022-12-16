@@ -137,7 +137,7 @@ class EmpresaCursosComponent extends Component{
         ]);
 
         
-        if($this->moCurso->categoria_id <> $this->categoria || $this->moCurso->nombre <> Str::title($this->nombre)){
+        if($this->moCurso->profesor_id <> $this->profesor || $this->moCurso->nombre <> Str::title($this->nombre)){
             $this->replicarCurso();
         }
 
@@ -203,7 +203,7 @@ class EmpresaCursosComponent extends Component{
             $newMoExamen->save();
 
             // replicar preguntas
-            foreach($newMoExamen->preguntas as $pregunta){
+            foreach($this->moCurso->examen->preguntas as $pregunta){
                 $newMoPregunta = $pregunta->replicate();
                 $newMoPregunta->examen_id = $newMoExamen->id;
                 $newMoPregunta->save();
@@ -211,7 +211,7 @@ class EmpresaCursosComponent extends Component{
                     $this->moPregunta = $newMoPregunta;
                 }
                 // replicar opciones
-                foreach($newMoPregunta->opciones as $opcion){
+                foreach($pregunta->opciones as $opcion){
                     $newMoOpcion = $opcion->replicate();
                     $newMoOpcion->pregunta_id = $newMoPregunta->id;
                     $newMoOpcion->save();
