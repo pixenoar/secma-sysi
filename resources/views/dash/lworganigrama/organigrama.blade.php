@@ -5,10 +5,12 @@
                 <h5 class="modal-title" id="modalOrganigramaLabel">Organigrama</h5>
             </div>
             <div class="modal-body">
-                <ul>
-                    @foreach($moEmpresa->sectores->where('padre_id', 0)->sortBy('nombre') as $sector)
+                <ul class="m-0">
+                    @forelse($moEmpresa->sectores->where('padre_id', 0)->sortBy('nombre') as $sector)
                         @include('dash.lworganigrama.recursivo', $sector)
-                    @endforeach
+                    @empty
+                        <div class="p-mb-0">No hay sectores creados.</div>
+                    @endforelse
                 </ul>
             </div>
             <div class="modal-footer">

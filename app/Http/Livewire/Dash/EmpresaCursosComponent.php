@@ -196,6 +196,13 @@ class EmpresaCursosComponent extends Component{
             // replicar curso
             $newMoCurso = $this->moCurso->replicate();
             $newMoCurso->save();
+
+            // replicar materiales
+            foreach($this->moCurso->materiales as $material){
+                $newMoMaterial = $material->replicate();
+                $newMoMaterial->curso_id = $newMoCurso->id;
+                $newMoMaterial->save();
+            }
             
             // replicar examen
             $newMoExamen = $this->moCurso->examen->replicate();

@@ -21,6 +21,7 @@ class CreateCursosTable extends Migration{
             $table->unsignedSmallInteger('horas');
             $table->string('imagen');
             $table->boolean('estado')->default(0);
+            $table->boolean('vigente')->default(1);
             $table->timestamps();
             // FKs
             $table->foreign('empresa_id')->references('id')->on('empresas');
